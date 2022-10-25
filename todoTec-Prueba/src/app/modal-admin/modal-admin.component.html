@@ -1,0 +1,29 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Administador</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="onNoClick()"></button>
+        </div>
+        <div class="modal-body">
+            <form  class="form">
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">name:</label>
+                    <input  type="text" class="form-control" id="recipient-name" [(ngModel)]="data.name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">mail:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="data.mail" name="mail">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">rol:</label>
+                    <input type="text" class="form-control" id="recipient-name" [(ngModel)]="data.rol" name="rol">
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary mr-3" data-bs-dismiss="modal" (click)="onNoClick()">Close</button>
+            <button type="button" class="btn btn-primary " [mat-dialog-close]="data">Send message</button>
+        </div>
+    </div>
+</div>
+
