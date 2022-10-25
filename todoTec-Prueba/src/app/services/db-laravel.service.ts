@@ -18,7 +18,17 @@ export class DbLaravelService {
   }
 
   postAdministrador = (paydload: IModal)=>{
-    return this.http.post(`http://127.0.0.1:8000/api/administradors/register`, paydload)
+    return this.http.post(`http://127.0.0.1:8000/api/administradors/register`, paydload);
+  }
+
+
+  updateAdministrador = (paydload: IData)=>{
+    return this.http.put(`http://127.0.0.1:8000/api/administradors/actulizacion`, paydload);
+
+  }
+
+  deleteAdministrador = (id:any)=>{
+    return this.http.delete(`http://127.0.0.1:8000/api/administradors/eliminacion`, id);
   }
 
 

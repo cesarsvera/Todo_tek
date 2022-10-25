@@ -13,6 +13,8 @@ import { ModalAdminComponent } from './modal-admin/modal-admin.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatDialogModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     DbLaravelService

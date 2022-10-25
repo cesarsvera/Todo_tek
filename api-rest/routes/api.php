@@ -21,3 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('administradors',[AdministradorController::class, 'index']);
 
 Route::post('administradors/register',[AdministradorController::class, 'create']);
+
+Route::put('administradors/actulizacion',[AdministradorController::class, 'update']);
+
+Route::delete('administradors/eliminacion',[AdministradorController::class, 'destroy']);

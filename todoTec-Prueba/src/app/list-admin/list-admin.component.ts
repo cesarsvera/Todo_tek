@@ -63,8 +63,53 @@ export class ListAdminComponent implements OnInit {
     })
   }
 
+  onclickDelete = (parametro: string)=>{
+    this.data.deleteAdministrador({id:parametro}).subscribe(dat=>{
+      console.log(dat);
+    })
+  }
 
-  displayedColumns: string[] = ['position', 'name', 'mail', 'rol'];
+  onclickUpdate = (parametro: string)=>{
+
+    const admin: IData[] = this.ELEMENT_DATA.filter(element => element.id === parseInt(parametro) )
+    this.name = admin[0].name;
+    this.mail = admin[0].mail;
+    this.rol = admin[0].rol;
+
+
+    const dialogRef = this.dialog.open(ModalAdminComponent, {
+      width: '250px',
+      data: { name: this.name, mail: this.mail, rol: this.rol },
+    });
+
+
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result !== undefined) {
+        console.log(result);
+        this.name = result.name;
+        this.mail = result.mail;
+        this.rol = result.rol;
+
+        
+        this.data.updateAdministrador({ "id":parseInt(parametro), "name": this.name, 'mail': this.mail, 'rol': this.rol }).subscribe(data => {
+          this.name = '';
+          this.mail = '';
+          this.rol = '';
+          this.dataAdministrator()
+          this.ngAfterViewInit()
+        })
+
+      }
+
+
+
+    });
+  }
+
+
+  displayedColumns: string[] = ['position', 'name', 'mail', 'rol', 'acciones'];
   resultsLength = 0;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

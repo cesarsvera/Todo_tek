@@ -82,16 +82,30 @@ class AdministradorController extends Controller
     public function update(Request $request, Administrador $administrador)
     {
         //
+
+        $administrador = Administrador::findOrFail($request->id);
+        $administrador-> name = $request->name;
+        $administrador-> mail = $request->mail;
+        $administrador-> rol = $request->rol;
+
+        $administrador -> save();
+
+        return response() ->json(['message'=>'succes']);
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Administrador  $administrador
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Administrador $administrador)
+    public function destroy(Administrador $administrador,Request $request )
     {
         //
+        $administrador = Administrador::findOrFail($request->id);
+        $administrador -> delete();
+        return response() -> json(['message' => 'success delete']);
     }
 }
