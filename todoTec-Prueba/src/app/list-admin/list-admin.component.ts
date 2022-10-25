@@ -64,7 +64,7 @@ export class ListAdminComponent implements OnInit {
   }
 
   onclickDelete = (parametro: string)=>{
-    this.data.deleteAdministrador({id:parametro}).subscribe(dat=>{
+    this.data.deleteAdministrador(parseInt(parametro)).subscribe(dat=>{
       console.log(dat);
       this.dataAdministrator();
       this.ngAfterViewInit();

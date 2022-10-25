@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IModal } from '../interfaces/IModal.interface';
 import { IData } from '../interfaces/IData.interface';
@@ -7,6 +7,7 @@ import { IData } from '../interfaces/IData.interface';
   providedIn: 'root'
 })
 export class DbLaravelService {
+  
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +28,16 @@ export class DbLaravelService {
 
   }
 
-  deleteAdministrador = (id:any)=>{
-    return this.http.delete(`http://127.0.0.1:8000/api/administradors/eliminacion`, id);
+  deleteAdministrador = (id: number)=>{
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: {
+        id: id
+      },
+    };
+    return this.http.delete(`http://127.0.0.1:8000/api/administradors/eliminacion`, options);
   }
 
 
